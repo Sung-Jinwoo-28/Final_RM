@@ -4,6 +4,14 @@ import { Award, Users, GraduationCap, Code } from "lucide-react";
 export const CareerTimeline = () => {
   const careerEvents = [
     {
+      year: "2024",
+      title: "Early Tech & Business Enthusiast",
+      subtitle: "Foundational Skills",
+      description:
+        "Started the journey into automation and web development. Developed proficiency in HTML, CSS, and Python, laying the groundwork for a tech-enabled business career.",
+      icon: <Code className="h-4 w-4 mr-2 text-primary" />,
+    },
+    {
       year: "June 2025 – Present",
       title: "BBA (Finance & Marketing)",
       subtitle: "Christ University, Bangalore",
@@ -26,14 +34,6 @@ export const CareerTimeline = () => {
       description:
         "Completed Google's Data Analytics Professional Certificate and University of Michigan's 'Python for Everybody'. Gained robust skills in data visualization, cleaning, and writing efficient automation scripts for business intelligence.",
       icon: <Award className="h-4 w-4 mr-2 text-primary" />,
-    },
-    {
-      year: "2024",
-      title: "Early Tech & Business Enthusiast",
-      subtitle: "Foundational Skills",
-      description:
-        "Started the journey into automation and web development. Developed proficiency in HTML, CSS, and Python, laying the groundwork for a tech-enabled business career.",
-      icon: <Code className="h-4 w-4 mr-2 text-primary" />,
     },
   ];
 

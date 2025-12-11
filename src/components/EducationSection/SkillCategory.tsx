@@ -43,7 +43,7 @@ export default function ProfessionalProfile() {
               {[
                 { name: "Excel", level: 90 },
                 { name: "Python", level: 85 },
-                { name: "Data Analysis", level: 80},
+                { name: "Data Analysis", level: 80 },
                 { name: "SQL/BigQuery", level: 50 },
                 { name: "R", level: 20 },
               ].map((skill, i) => (
@@ -55,12 +55,12 @@ export default function ProfessionalProfile() {
                   viewport={{ once: true, amount: 0.8 }}
                 >
                   <div
-                    className="flex items-center justify-between text-sm 
+                    className="flex items-center justify-between text-base md:text-lg 
                   font-medium mb-1"
                   >
                     <span>{skill.name}</span>
                     <CountUp
-                      className="text-md "
+                      className="text-base md:text-lg "
                       value={skill.level}
                       suffix="%"
                       duration={1.5}
@@ -96,7 +96,7 @@ export default function ProfessionalProfile() {
                     transition={{ type: "spring", stiffness: 200, damping: 10 }}
                     viewport={{ once: true }}
                   >
-                    <Badge className="bg-indigo-500">{skill}</Badge>
+                    <Badge className="bg-cyan-500 text-sm md:text-base">{skill}</Badge>
                   </motion.div>
                 ))}
               </AnimatePresence>

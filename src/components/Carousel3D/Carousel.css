@@ -22,6 +22,9 @@
   /* Slightly smaller for better fit */
   --card-height: 400px;
   --carousel-radius: 350px;
+  touch-action: pan-y;
+  /* Allow vertical scroll, handle horizontal in JS */
+  cursor: grab;
 }
 
 @media (max-width: 768px) {
@@ -29,6 +32,14 @@
     --card-width: 220px;
     --card-height: 320px;
     --carousel-radius: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-root {
+    --card-width: 260px;
+    --card-height: 380px;
+    --carousel-radius: 290px;
   }
 }
 
@@ -126,31 +137,35 @@
   flex-direction: column;
 
   /* UPDATED: Premium Glassmorphism */
-  background: hsl(var(--card) / 0.65);
-  /* More translucent for "glass" feel */
-  backdrop-filter: blur(24px);
-  /* Heavy frosted glass */
-  -webkit-backdrop-filter: blur(24px);
+  background: hsl(var(--card) / 0.8);
+  /* Translucent for glass feel */
+  backdrop-filter: blur(40px);
+  /* Ultra-heavy frost to blur back cards */
+  -webkit-backdrop-filter: blur(40px);
   /* Subtle light border for glass edge reflection */
-  border: 1px solid hsl(var(--foreground) / 0.1);
-  border-top: 1px solid hsl(var(--foreground) / 0.2);
+  border: 1px solid hsl(var(--foreground) / 0.15);
+  border-top: 1px solid hsl(var(--foreground) / 0.3);
   /* Highlight on top edge */
   box-shadow:
     0 8px 32px 0 rgba(0, 0, 0, 0.3),
     /* Depth shadow */
-    inset 0 0 0 1px hsl(var(--foreground) / 0.05);
+    inset 0 0 0 1px hsl(var(--foreground) / 0.1);
   /* Inner rim light */
   color: hsl(var(--card-foreground));
 }
 
 .card-front {
-  /* Subtle gradient sheen */
-  background: linear-gradient(135deg, hsl(var(--card) / 0.7) 0%, hsl(var(--card) / 0.4) 100%);
+  /* Glossy sheen gradient */
+  background: linear-gradient(145deg,
+      hsl(var(--card) / 0.8) 0%,
+      hsl(var(--card) / 0.6) 100%);
 }
 
 .card-back {
   /* Matching gradient for back */
-  background: linear-gradient(135deg, hsl(var(--card) / 0.7) 0%, hsl(var(--card) / 0.4) 100%);
+  background: linear-gradient(145deg,
+      hsl(var(--card) / 0.8) 0%,
+      hsl(var(--card) / 0.6) 100%);
   transform: rotateY(180deg);
 }
 
@@ -202,7 +217,7 @@
 .memory-coordinates {
   margin-top: auto;
   font-size: 0.7rem;
-  color: rgba(249, 250, 251, 0.6);
+  color: hsl(var(--muted-foreground));
   /* slightly dimmed */
   display: flex;
   flex-direction: column;

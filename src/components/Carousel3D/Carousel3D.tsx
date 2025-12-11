@@ -166,7 +166,7 @@ export const Carousel3D = () => {
 										{/* Front */}
 										<div className="card-front">
 											<div className="memory-date">{card.date}</div>
-											<h3 style={{ color: 'var(--text-main)' }}>
+											<h3>
 												{card.title}
 											</h3>
 											<div className="memory-image">

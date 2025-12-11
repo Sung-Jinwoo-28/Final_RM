@@ -183,7 +183,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [resultMessage, setResultMessage] = useState("");
-  
+
   // Country Dropdown State
   const [selectedCountry, setSelectedCountry] = useState(countries[0]); // Default to India
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -202,7 +202,7 @@ export default function ContactSection() {
   }, []);
 
   // Filter countries based on search
-  const filteredCountries = countries.filter(country => 
+  const filteredCountries = countries.filter(country =>
     country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     country.dial_code.includes(searchQuery) ||
     country.code.toLowerCase().includes(searchQuery.toLowerCase())
@@ -247,7 +247,7 @@ export default function ContactSection() {
       setResultMessage("Message sent successfully!");
       (event.target as HTMLFormElement).reset();
       setSelectedCountry(countries[0]); // Reset country
-      
+
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
@@ -271,7 +271,7 @@ export default function ContactSection() {
         className="mb-12 text-center"
       >
         <h3 className="text-3xl font-bold mb-6">Get In Touch</h3>
-        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
           I'm always open to discussing new projects, creative ideas or opportunities.
         </p>
       </motion.div>
@@ -289,7 +289,7 @@ export default function ContactSection() {
               <CardTitle>Let's Connect</CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300">
                 Feel free to reach out for collaborations or just a friendly hello!
               </p>
               <div className="flex gap-4">
@@ -327,124 +327,124 @@ export default function ContactSection() {
                 <input type="hidden" name="subject" value="New Portfolio Contact Submission" />
                 {/* Hidden input to send the selected country code */}
                 <input type="hidden" name="country_code" value={selectedCountry.dial_code} />
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        required 
-                        className={glassInputStyle} 
-                        placeholder="John Doe" 
+                    <label className="text-base font-medium text-gray-700 dark:text-gray-300">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className={glassInputStyle}
+                      placeholder="John Doe"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        required 
-                        className={glassInputStyle} 
-                        placeholder="john@example.com" 
+                    <label className="text-base font-medium text-gray-700 dark:text-gray-300">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className={glassInputStyle}
+                      placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
                 {/* Custom Country Dropdown & Phone */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number</label>
+                  <label className="text-base font-medium text-gray-700 dark:text-gray-300">Phone Number</label>
                   <div className="flex gap-3 relative">
                     {/* Custom Dropdown Trigger */}
                     <div className="relative" ref={dropdownRef}>
-                        <button
-                            type="button"
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className={`${glassInputStyle} w-32 flex items-center justify-between gap-2 px-3`}
-                        >
-                            <span className="truncate">{selectedCountry.code} {selectedCountry.dial_code}</span>
-                            <ChevronDown size={16} className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`${glassInputStyle} w-32 flex items-center justify-between gap-2 px-3`}
+                      >
+                        <span className="truncate">{selectedCountry.code} {selectedCountry.dial_code}</span>
+                        <ChevronDown size={16} className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
 
-                        {/* Dropdown Menu */}
-                        <AnimatePresence>
-                            {isDropdownOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    className="absolute top-full left-0 mt-2 w-64 max-h-60 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden flex flex-col"
-                                >
-                                    {/* Search Bar */}
-                                    <div className="p-2 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-900">
-                                        <div className="relative">
-                                            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                                            <input
-                                                type="text"
-                                                placeholder="Search country..."
-                                                value={searchQuery}
-                                                onChange={(e) => setSearchQuery(e.target.value)}
-                                                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-gray-100 dark:bg-gray-800 border-none focus:ring-2 focus:ring-indigo-500 outline-none"
-                                                autoFocus
-                                            />
-                                        </div>
-                                    </div>
+                      {/* Dropdown Menu */}
+                      <AnimatePresence>
+                        {isDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            className="absolute top-full left-0 mt-2 w-64 max-h-60 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden flex flex-col"
+                          >
+                            {/* Search Bar */}
+                            <div className="p-2 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-900">
+                              <div className="relative">
+                                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <input
+                                  type="text"
+                                  placeholder="Search country..."
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
+                                  className="w-full pl-9 pr-3 py-2 text-sm rounded-lg bg-gray-100 dark:bg-gray-800 border-none focus:ring-2 focus:ring-indigo-500 outline-none"
+                                  autoFocus
+                                />
+                              </div>
+                            </div>
 
-                                    {/* Country List */}
-                                    <div className="overflow-y-auto flex-1">
-                                        {filteredCountries.length > 0 ? (
-                                            filteredCountries.map((country) => (
-                                                <button
-                                                    key={country.code}
-                                                    type="button"
-                                                    onClick={() => {
-                                                        setSelectedCountry(country);
-                                                        setIsDropdownOpen(false);
-                                                        setSearchQuery("");
-                                                    }}
-                                                    className="w-full px-4 py-2 text-left text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/30 flex items-center justify-between group transition-colors"
-                                                >
-                                                    <span className="text-gray-700 dark:text-gray-200">{country.name}</span>
-                                                    <span className="text-gray-400 group-hover:text-indigo-500 font-mono text-xs">{country.dial_code}</span>
-                                                </button>
-                                            ))
-                                        ) : (
-                                            <div className="p-4 text-center text-sm text-gray-500">No country found</div>
-                                        )}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                            {/* Country List */}
+                            <div className="overflow-y-auto flex-1">
+                              {filteredCountries.length > 0 ? (
+                                filteredCountries.map((country) => (
+                                  <button
+                                    key={country.code}
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedCountry(country);
+                                      setIsDropdownOpen(false);
+                                      setSearchQuery("");
+                                    }}
+                                    className="w-full px-4 py-2 text-left text-sm hover:bg-indigo-50 dark:hover:bg-indigo-900/30 flex items-center justify-between group transition-colors"
+                                  >
+                                    <span className="text-gray-700 dark:text-gray-200">{country.name}</span>
+                                    <span className="text-gray-400 group-hover:text-indigo-500 font-mono text-xs">{country.dial_code}</span>
+                                  </button>
+                                ))
+                              ) : (
+                                <div className="p-4 text-center text-sm text-gray-500">No country found</div>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
 
-                    <input 
-                        type="tel" 
-                        name="phone" 
-                        className={`${glassInputStyle} flex-1`} 
-                        placeholder="98765 43210" 
+                    <input
+                      type="tel"
+                      name="phone"
+                      className={`${glassInputStyle} flex-1`}
+                      placeholder="98765 43210"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-                  <textarea 
-                    name="message" 
-                    required 
-                    rows={4} 
-                    className={`${glassInputStyle} resize-none`} 
-                    placeholder="Your message here..." 
+                  <label className="text-base font-medium text-gray-700 dark:text-gray-300">Message</label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    className={`${glassInputStyle} resize-none`}
+                    placeholder="Your message here..."
                   />
                 </div>
-                
+
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
                   className={`w-full py-2.5 px-4 font-medium rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg 
-                    ${submitStatus === "success" ? "bg-pink-600 hover:bg-pink-700" : 
-                      submitStatus === "error" ? "bg-red-600 hover:bg-red-700" : 
-                      "bg-indigo-600 hover:bg-indigo-700"} text-white`}
+                    ${submitStatus === "success" ? "bg-pink-600 hover:bg-pink-700" :
+                      submitStatus === "error" ? "bg-red-600 hover:bg-red-700" :
+                        "bg-indigo-600 hover:bg-indigo-700"} text-white`}
                 >
                   {isSubmitting ? (
                     "Sending..."
@@ -458,9 +458,9 @@ export default function ContactSection() {
                 </motion.button>
 
                 {resultMessage && (
-                    <p className={`text-center text-sm mt-2 ${submitStatus === 'success' ? 'text-indigo-500' : 'text-indigo-500'}`}>
-                        {resultMessage}
-                    </p>
+                  <p className={`text-center text-sm mt-2 ${submitStatus === 'success' ? 'text-indigo-500' : 'text-indigo-500'}`}>
+                    {resultMessage}
+                  </p>
                 )}
               </form>
             </CardContent>

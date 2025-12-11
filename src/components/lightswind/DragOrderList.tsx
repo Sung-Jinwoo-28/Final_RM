@@ -69,16 +69,16 @@ function DragOrderItem({ item }: { item: DragItem }) {
       className="flex justify-between items-start p-4 bg-background 
       text-foreground rounded-xl border border-border shadow-sm"
     >
-      <div className="flex flex-col space-y-1 flex-1">
-        <h2 className="text-lg font-semibold">{item.title}</h2>
-        <p className="text-sm text-muted-foreground">{item.subtitle}</p>
-        <span className="text-xs text-muted-foreground">{item.date}</span>
+      <div className="flex flex-col space-y-2 flex-1">
+        <h2 className="text-lg md:text-xl font-bold">{item.title}</h2>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{item.subtitle}</p>
+        <span className="text-xs md:text-sm text-muted-foreground">{item.date}</span>
         {item.link && (
           <a
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-block text-xs text-blue-500 hover:underline"
+            className="mt-2 inline-block text-xs md:text-sm text-blue-500 hover:underline"
           >
             More Info
           </a>

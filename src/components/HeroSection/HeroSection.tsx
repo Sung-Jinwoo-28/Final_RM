@@ -26,7 +26,7 @@ export const HeroSection = () => {
         initial={false} // so it inherits parent animation
       >
         <motion.h1
-          className="text-4xl font-bold"
+          className="text-4xl md:text-6xl font-bold"
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
@@ -37,7 +37,7 @@ export const HeroSection = () => {
         >
           Rahul Modi
           <motion.span
-            className="text-sm text-indigo-500 font-semibold block"
+            className="text-sm md:text-lg text-cyan-500 font-semibold block"
             initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
             animate={{
               opacity: 1,
@@ -51,7 +51,7 @@ export const HeroSection = () => {
         </motion.h1>
 
         <motion.h2
-          className={`text-xl ${textColor} mt-1`}
+          className={`text-xl md:text-3xl ${textColor} mt-1`}
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
@@ -64,7 +64,7 @@ export const HeroSection = () => {
         </motion.h2>
 
         <motion.p
-          className={`mt-4 text-sm ${textColor}`}
+          className={`mt-4 text-base md:text-lg ${textColor}`}
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
@@ -75,7 +75,7 @@ export const HeroSection = () => {
         >
           I’m a motivated student with a strong interest in finance,
           data analysis, and technology.I enjoy working with numbers,
-          understanding market trends,& backend development, and creating 
+          understanding market trends,& backend development, and creating
           scalable solutions that captivate audiences. Passionate about
           blending creativity with technology to bring ideas to life.
         </motion.p>
@@ -90,9 +90,9 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          <Badge className="text-xs bg-indigo-500">Team Lead</Badge>
-          <Badge className="text-xs bg-indigo-500">Problem Solving</Badge>
-          <Badge className="text-xs bg-indigo-500">Decision Making</Badge>
+          <Badge className="text-xs bg-cyan-500">Team Lead</Badge>
+          <Badge className="text-xs bg-cyan-500">Problem Solving</Badge>
+          <Badge className="text-xs bg-cyan-500">Decision Making</Badge>
         </motion.div>
       </motion.div>
 

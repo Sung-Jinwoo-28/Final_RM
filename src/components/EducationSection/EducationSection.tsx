@@ -27,7 +27,7 @@ export const EducationSection = () => {
           Education
         </motion.h3>
 
-        
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-1 gap-8"
           initial={{ opacity: 0, y: 20 }}
@@ -38,11 +38,11 @@ export const EducationSection = () => {
           <Card>
             <CardHeader>
               <CardTitle>BBA in Finance & Marketing Analytics</CardTitle>
-              <p className={`text-base ${textColor}`}>
+              <p className={`text-base md:text-lg ${textColor}`}>
                 Christ University, Bangalore — 2025 – Present
               </p>
             </CardHeader>
-            <CardContent className={`text-sm ${textColor} space-y-2`}>
+            <CardContent className={`text-base md:text-lg leading-relaxed ${textColor} space-y-2`}>
               <p>
                 Specialized in <strong>Software Architecture</strong>,
                 <strong> Distributed Systems</strong>, and
@@ -59,14 +59,14 @@ export const EducationSection = () => {
           <Card>
             <CardHeader>
               <CardTitle>Higher Secondary Education (PCM)</CardTitle>
-              <p className={`text-base ${textColor}`}>
+              <p className={`text-base md:text-lg ${textColor}`}>
                 Rajkumar College — 2023 – 2025
               </p>
             </CardHeader>
-            <CardContent className={`text-sm ${textColor} space-y-2`}>
+            <CardContent className={`text-base md:text-lg leading-relaxed ${textColor} space-y-2`}>
               <p>
-                Completed higher secondary education with a focus on Physics, 
-                Chemistry, and Mathematics (PCM), developing <strong>strong logical thinking</strong>, 
+                Completed higher secondary education with a focus on Physics,
+                Chemistry, and Mathematics (PCM), developing <strong>strong logical thinking</strong>,
                 <strong> problem-solving abilities</strong>, and a structured approach to analytical challenges.
               </p>
               <ul className="list-disc list-inside space-y-1">
