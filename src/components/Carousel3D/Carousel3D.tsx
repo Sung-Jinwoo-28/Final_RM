@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Code, Bug, BookOpen, Atom, GitBranch, Rocket, Clock, MapPin } from "lucide-react";
-import "./carousel.css";
+import "./Carousel.css";
 
 const CARDS = [
 	{
