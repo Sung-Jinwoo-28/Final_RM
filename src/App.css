@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "./components/lightswind.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Geist Sans", sans-serif;
+  --font-aldrich: "Aldrich", sans-serif; 
+}
+
+/* 1. Define Light Mode (Default) */
+:root {
+  --bg-color: #f8fafc; /* Soft White/Gray */
+  --bg-image: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  --text-main: #1a202c; /* Dark text for light background */
+
+  /* New Carousel Colors */
+  --carousel-primary: #9d00ff;
+  --carousel-secondary: #00e5ff;
+  --carousel-accent: #ff00e5;
+  --carousel-card-bg: rgba(20, 20, 40, 0.7);
+  --carousel-text-primary: #ffffff;
+  --carousel-text-secondary: #b8b8ff;
+  --carousel-glow-primary: 0 0 10px rgba(157, 0, 255, 0.7), 0 0 20px rgba(157, 0, 255, 0.5);
+  --carousel-glow-secondary: 0 0 10px rgba(0, 229, 255, 0.7), 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+/* 2. Define Dark Mode (Your existing Nano/Banana design) */
+:root.dark {
+  --bg-color: #0d0a14;
+  --bg-image: 
+      radial-gradient(
+          circle at 5% 95%, 
+          rgba(200, 200, 0, 0.15) 0%, 
+          transparent 70%
+      ),
+      radial-gradient(
+          circle at 95% 5%, 
+          rgba(128, 255, 0, 0.15) 0%, 
+          transparent 70%
+      ),
+      linear-gradient(
+          135deg, 
+          #0a0812 0%, 
+          #1b0f2c 100%
+      );
+  --text-main: #ffffff; /* White text for dark background */
+}
+
+/* 3. Apply Variables to Body */
+body {
+  font-family: var(--font-sans);
+  
+  /* Use the variables we defined above */
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-main);
+
+  background-size: cover;
+  background-attachment: fixed;
+  
+  /* Add smooth transition for the theme switch */
+  transition: background-color 0.5s ease, background-image 0.5s ease, color 0.5s ease;
+}
+
+/* Ensure your text on the Glassmorphism card remains white/light */
+.glass-card-text {
+    color: #ffffff; 
+}
+
+@layer utilities {
+  .text-custom-dark {
+    color: #003333;
+  }
+}
+
+/* FORCE FIX: Make all text inside the Journey section follow the theme color */
+#journey p, 
+#journey span, 
+#journey div {
+  color: var(--text-main) !important;
+}
+
+/* SPECIFIC FIX: Make Titles Cyan */
+#journey h1, 
+#journey h2, 
+#journey h3 {
+  color: #06b6d4 !important; /* Cyan-500 */
+  /* Or use a brighter cyan for dark mode if needed: #22d3ee */
+}
+
+/* Optional: If the cards are too bright in light mode, add a slight border/shadow */
+#journey .glass-card {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Carousel Card Styles */
+.memory-card-custom {
+  width: 300px;
+  height: 420px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-inner-custom {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.flipped .card-inner-custom {
+  transform: rotateY(180deg);
+}
+
+.card-front-custom, .card-back-custom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-front-custom {
+  background: linear-gradient(135deg, rgba(30, 30, 60, 0.8), rgba(20, 20, 40, 0.9));
+  border: 1px solid rgba(157, 0, 255, 0.3);
+}
+
+.card-back-custom {
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.9), rgba(30, 30, 60, 0.8));
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  transform: rotateY(180deg);
+}
+
+.memory-date-custom {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  color: var(--carousel-accent);
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(255, 0, 229, 0.7);
+}
+
+.memory-title-custom {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--carousel-text-primary);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.memory-image-custom {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-effect-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 65%, rgba(157, 0, 255, 0.3) 70%, transparent 75%);
+  background-size: 200% 200%;
+  animation: glitch 3s linear infinite;
+}
+
+@keyframes glitch {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 0; }
+}
+
+/* FIX: Make Carousel Cards Readable */
+#journey .glass-card, 
+.card-front-custom, 
+.memory-card-custom > div {
+    /* 1. Make background very dark (95% opacity) so text pops */
+    background-color: rgba(5, 5, 10, 0.95) !important; 
+    
+    /* 2. Blur anything behind the card so it doesn't distract */
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    
+    /* 3. Add a strong shadow to separate the front card from the back ones */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9) !important;
+    
+    /* 4. Ensure border is subtle */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* FIX 1: Make the card background solid enough to block the back cards */
+#journey .glass-card, 
+.card-front-custom {
+    /* 98% opacity - almost solid black */
+    background: rgba(5, 5, 10, 0.98) !important; 
+    /* Add a subtle gradient to keep it looking premium, not flat */
+    background: linear-gradient(145deg, rgba(20, 20, 25, 0.98), rgba(5, 5, 10, 0.99)) !important;
+}
+
+/* FIX 3: Push back the non-active cards */
+/* This targets cards that are scaled down or rotated away */
+.memory-card-custom:not(:hover) {
+    filter: brightness(0.6); /* Dim them */
+    opacity: 0.7; /* Make them fade out */
+    transition: all 0.3s ease;
+}
+
+/* Bring the hovered/active card to full brightness */
+.memory-card-custom:hover {
+    filter: brightness(1);
+    opacity: 1;
+    z-index: 100; /* Ensure it sits on top */
+}
+
+/* FIX: Apply Aldrich font to the entire 3D Carousel */
+#journey, 
+#journey .glass-card, 
+.memory-card-custom, 
+.memory-title-custom, 
+.memory-date-custom,
+#journey p, 
+#journey h3 {
+    font-family: var(--font-aldrich) !important;
+    letter-spacing: 0.05em; /* Adds a slight techy spacing */
+}
+
